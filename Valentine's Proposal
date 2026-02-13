@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pallavi ❤️ Meow</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Comic Sans MS', cursive;
+        text-align: center;
+        background: linear-gradient(to bottom right, #ff9ecf, #ffc3e6);
+        overflow: hidden;
+    }
+
+    .container {
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 40px;
+        color: white;
+    }
+
+    p {
+        font-size: 22px;
+        color: white;
+    }
+
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 15px;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background-color: #ff4d88;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: white;
+        color: #ff4d88;
+        position: absolute;
+    }
+
+    .hearts {
+        position: fixed;
+        bottom: -10px;
+        font-size: 20px;
+        animation: float 5s linear infinite;
+        color: white;
+    }
+
+    @keyframes float {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(-100vh);}
+    }
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+    <h1>4 years ago… you said YES.</h1>
+    <p>And I still get butterflies, Pallavi 💕</p>
+    <button onclick="nextPage()">Continue, Mr. Dramatic</button>
+</div>
+
+<script>
+
+function nextPage() {
+    document.getElementById("content").innerHTML = `
+        <h1>You still smile the same way…</h1>
+        <p>You still steal the blanket.<br>
+        You still own Meow's heart. 😌</p>
+        <button onclick="finalPage()">So...?</button>
+    `;
+}
+
+function finalPage() {
+    document.getElementById("content").innerHTML = `
+        <h1>Mrs. Pallavi ❤️</h1>
+        <p>Will you be my Valentine… again?</p>
+        <button id="yesBtn" onclick="yesClicked()">Obviously yes 😌</button>
+        <button id="noBtn" onmouseover="moveButton()">Think again 🙄</button>
+    `;
+}
+
+function yesClicked() {
+    document.getElementById("content").innerHTML = `
+        <h1>Good.</h1>
+        <p>Because Meow never stopped choosing you. ❤️<br><br>
+        Happy Valentine’s Day, Pallavi.</p>
+    `;
+}
+
+function moveButton() {
+    let button = document.getElementById("noBtn");
+    let x = Math.random() * (window.innerWidth - 150);
+    let y = Math.random() * (window.innerHeight - 50);
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+// Floating hearts
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "hearts";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}, 500);
+
+</script>
+
+</body>
+</html>
